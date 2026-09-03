@@ -1,4 +1,4 @@
-// Edit this file to update the site. Empty sections are hidden automatically.
+// Edit this file to update profile details and publications.
 window.SITE_CONTENT = {
   profile: {
     email: "1323827835@qq.com",
@@ -86,8 +86,5 @@ window.SITE_CONTENT = {
         { label: "Code", url: "https://github.com/ZhaoJichun1/D3CTTA" }
       ]
     }
-  ],
-  news: [
-    // Example: { date: "2026.06", text: "Our paper was accepted to CVPR 2026." }
   ]
 };

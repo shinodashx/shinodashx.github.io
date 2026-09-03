@@ -115,20 +115,4 @@
     publicationList.appendChild(article);
   });
   if (!publications.length) document.getElementById("publications").hidden = true;
-
-  const newsList = document.getElementById("news-list");
-  const news = content.news || [];
-  news.forEach((item) => {
-    const row = document.createElement("li");
-    const date = document.createElement("time");
-    date.textContent = item.date;
-    const text = document.createElement("p");
-    text.textContent = item.text;
-    row.append(date, text);
-    newsList.appendChild(row);
-  });
-  if (!news.length) {
-    document.getElementById("news").hidden = true;
-    document.querySelector("[data-news-nav]").hidden = true;
-  }
 })();
