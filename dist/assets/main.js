@@ -46,8 +46,20 @@
     const title = document.createElement("h3");
     title.textContent = item.title;
     const authors = document.createElement("p");
-    authors.textContent = item.authors || "";
+    authors.className = "publication-authors";
+    const authorText = item.authors || "";
+    const ownName = "Haoxuan Song";
+    const ownNameIndex = authorText.indexOf(ownName);
+    if (ownNameIndex >= 0) {
+      authors.append(document.createTextNode(authorText.slice(0, ownNameIndex)));
+      const highlightedName = document.createElement("strong");
+      highlightedName.textContent = ownName;
+      authors.append(highlightedName, document.createTextNode(authorText.slice(ownNameIndex + ownName.length)));
+    } else {
+      authors.textContent = authorText;
+    }
     const links = document.createElement("div");
+    links.className = "publication-links";
     (item.links || []).forEach((itemLink) => {
       const link = document.createElement("a");
       link.href = itemLink.url;
@@ -56,7 +68,28 @@
       link.rel = "noreferrer";
       links.appendChild(link);
     });
-    details.append(title, authors, links);
+    details.append(title, authors);
+
+    if (item.note) {
+      const note = document.createElement("p");
+      note.className = "publication-note";
+      note.textContent = item.note;
+      details.appendChild(note);
+    }
+
+    if (links.childElementCount) details.appendChild(links);
+
+    if (item.abstract) {
+      const disclosure = document.createElement("details");
+      disclosure.className = "publication-abstract";
+      const summary = document.createElement("summary");
+      summary.textContent = "Abstract";
+      const abstract = document.createElement("p");
+      abstract.textContent = item.abstract;
+      disclosure.append(summary, abstract);
+      details.appendChild(disclosure);
+    }
+
     article.append(meta, details);
     publicationList.appendChild(article);
   });
