@@ -4,11 +4,11 @@ Live site: <https://shinodashx.github.io/>
 
 A compact, responsive academic homepage for Haoxuan Song (宋昊轩), PhD candidate at the Chinese Academy of Sciences.
 
-The visual system is an original implementation informed by the restrained information hierarchy found in [Minimal Light](https://github.com/yaoyao-liu/minimal-light), [Academic Homepage](https://github.com/luost26/academic-homepage), and the classic [Jon Barron academic website](https://github.com/jonbarron/jonbarron.github.io).
+The visual system is an original, restrained implementation informed by [Kill AI Slop](https://killaislop.com/) and established academic-homepage patterns.
 
 ## Update content
 
-Edit `dist/assets/data.js` to add the biography, publications, and news. The page renders those sections automatically.
+Edit `dist/assets/data.js` to update profile links and publications. Edit the introduction in `dist/index.html`.
 
 ## Preview locally
 

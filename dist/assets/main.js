@@ -18,21 +18,6 @@
     });
   }
 
-  if (profile.bio) {
-    const placeholder = document.getElementById("bio-placeholder");
-    placeholder.textContent = profile.bio;
-    placeholder.hidden = false;
-  }
-
-  const researchList = document.getElementById("research-list");
-  (content.research || []).forEach((item) => {
-    const tag = document.createElement("span");
-    tag.className = "research-tag";
-    tag.textContent = item.title;
-    if (item.description) tag.title = item.description;
-    researchList.appendChild(tag);
-  });
-
   const publicationList = document.getElementById("publication-list");
   const publications = [...(content.publications || [])].sort(
     (first, second) => (first.order ?? Number.MAX_SAFE_INTEGER) - (second.order ?? Number.MAX_SAFE_INTEGER)
@@ -115,20 +100,4 @@
     publicationList.appendChild(article);
   });
   if (!publications.length) document.getElementById("publications").hidden = true;
-
-  const newsList = document.getElementById("news-list");
-  const news = content.news || [];
-  news.forEach((item) => {
-    const row = document.createElement("li");
-    const date = document.createElement("time");
-    date.textContent = item.date;
-    const text = document.createElement("p");
-    text.textContent = item.text;
-    row.append(date, text);
-    newsList.appendChild(row);
-  });
-  if (!news.length) {
-    document.getElementById("news").hidden = true;
-    document.querySelector("[data-news-nav]").hidden = true;
-  }
 })();
