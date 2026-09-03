@@ -21,7 +21,7 @@
   if (profile.bio) {
     const placeholder = document.getElementById("bio-placeholder");
     placeholder.textContent = profile.bio;
-    placeholder.classList.remove("muted");
+    placeholder.hidden = false;
   }
 
   const researchList = document.getElementById("research-list");
@@ -114,7 +114,7 @@
     article.appendChild(details);
     publicationList.appendChild(article);
   });
-  if (publications.length) document.getElementById("publications-empty").hidden = true;
+  if (!publications.length) document.getElementById("publications").hidden = true;
 
   const newsList = document.getElementById("news-list");
   const news = content.news || [];
@@ -127,5 +127,8 @@
     row.append(date, text);
     newsList.appendChild(row);
   });
-  if (news.length) document.getElementById("news-empty").hidden = true;
+  if (!news.length) {
+    document.getElementById("news").hidden = true;
+    document.querySelector("[data-news-nav]").hidden = true;
+  }
 })();

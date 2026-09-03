@@ -1,4 +1,4 @@
-// Edit this file to update the site. Empty arrays automatically show a quiet placeholder.
+// Edit this file to update the site. Empty sections are hidden automatically.
 window.SITE_CONTENT = {
   profile: {
     email: "1323827835@qq.com",
