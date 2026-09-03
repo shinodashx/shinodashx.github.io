@@ -34,15 +34,43 @@
   });
 
   const publicationList = document.getElementById("publication-list");
-  const publications = content.publications || [];
+  const publications = [...(content.publications || [])].sort(
+    (first, second) => (first.order ?? Number.MAX_SAFE_INTEGER) - (second.order ?? Number.MAX_SAFE_INTEGER)
+  );
   publications.forEach((item) => {
     const article = document.createElement("article");
     article.className = "publication";
+
+    if (item.image) {
+      const media = document.createElement("figure");
+      media.className = "publication-media";
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = item.imageAlt || "";
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.width = 1200;
+      image.height = 675;
+      media.appendChild(image);
+      article.appendChild(media);
+    }
+
     const meta = document.createElement("div");
-    meta.className = "venue";
-    meta.textContent = item.venue || "Preprint";
+    meta.className = "publication-meta";
+    const venue = document.createElement("span");
+    venue.className = "venue";
+    venue.textContent = item.venue || "Preprint";
+    meta.appendChild(venue);
+
+    if (item.note) {
+      const note = document.createElement("span");
+      note.className = "publication-note";
+      note.textContent = item.note;
+      meta.appendChild(note);
+    }
 
     const details = document.createElement("div");
+    details.className = "publication-content";
     const title = document.createElement("h3");
     title.textContent = item.title;
     const authors = document.createElement("p");
@@ -68,14 +96,7 @@
       link.rel = "noreferrer";
       links.appendChild(link);
     });
-    details.append(title, authors);
-
-    if (item.note) {
-      const note = document.createElement("p");
-      note.className = "publication-note";
-      note.textContent = item.note;
-      details.appendChild(note);
-    }
+    details.append(meta, title, authors);
 
     if (links.childElementCount) details.appendChild(links);
 
@@ -90,7 +111,7 @@
       details.appendChild(disclosure);
     }
 
-    article.append(meta, details);
+    article.appendChild(details);
     publicationList.appendChild(article);
   });
   if (publications.length) document.getElementById("publications-empty").hidden = true;
