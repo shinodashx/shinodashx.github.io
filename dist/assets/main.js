@@ -86,6 +86,8 @@
     } else {
       authors.textContent = authorText;
     }
+    const actions = document.createElement("div");
+    actions.className = "publication-actions";
     const links = document.createElement("div");
     links.className = "publication-links";
     (item.links || []).forEach((itemLink) => {
@@ -98,21 +100,55 @@
     });
     details.append(meta, title, authors);
 
-    if (links.childElementCount) details.appendChild(links);
+    if (links.childElementCount) actions.appendChild(links);
 
     if (item.abstract) {
       const disclosure = document.createElement("details");
       disclosure.className = "publication-abstract";
       const summary = document.createElement("summary");
       summary.textContent = "Abstract";
+      summary.setAttribute("aria-label", `Abstract for ${item.title}`);
       const abstract = document.createElement("p");
       abstract.textContent = item.abstract;
       disclosure.append(summary, abstract);
-      details.appendChild(disclosure);
+      actions.appendChild(disclosure);
     }
 
+    if (actions.childElementCount) details.appendChild(actions);
     article.appendChild(details);
     publicationList.appendChild(article);
   });
   if (!publications.length) document.getElementById("publications").hidden = true;
+
+  const navigation = [...document.querySelectorAll(".site-nav a")].map((link) => ({
+    link,
+    section: document.querySelector(link.getAttribute("href"))
+  }));
+  navigation.forEach(({ link, section }) => { link.hidden = section.hidden; });
+  const updateNavigation = () => {
+    const visible = navigation.filter(({ section }) => !section.hidden);
+    let current = visible[0];
+    for (const item of visible) {
+      if (item.section.getBoundingClientRect().top <= 150) current = item;
+    }
+    if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = visible[visible.length - 1];
+    }
+    navigation.forEach((item) => {
+      if (item === current) item.link.setAttribute("aria-current", "location");
+      else item.link.removeAttribute("aria-current");
+    });
+  };
+  let scheduled = false;
+  window.addEventListener("scroll", () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => {
+      updateNavigation();
+      scheduled = false;
+    });
+  }, { passive: true });
+  window.addEventListener("resize", updateNavigation);
+  window.addEventListener("load", updateNavigation);
+  updateNavigation();
 })();
