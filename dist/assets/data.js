@@ -32,10 +32,10 @@ window.SITE_CONTENT = {
     {
       order: 2,
       venue: "Under Review",
-      title: "BRepDSN: A Dual-stream Network Design for B-Rep Representation Learning Leveraging the Duality of Face and Boundary Vertices",
+      title: "BREP Learning paper",
       authors: "Haoxuan Song et al.",
       image: "assets/publications/brepdsn.svg",
-      imageAlt: "BRepDSN boundary-representation examples showing face and boundary-vertex structures.",
+      imageAlt: "Boundary-representation examples showing face and boundary-vertex structures.",
       links: []
     },
     {
@@ -52,7 +52,8 @@ window.SITE_CONTENT = {
       order: 3,
       venue: "arXiv 2025",
       title: "VRSketch2Gaussian: 3D VR Sketch Guided 3D Object Generation with Gaussian Splatting",
-      authors: "Songen Gu, Haoxuan Song, Binjie Liu, Qian Yu, Sanyi Zhang, Haiyong Jiang, Jin Huang, Feng Tian",
+      authors: "Songen Gu*, Haoxuan Song*, Binjie Liu, Qian Yu, Sanyi Zhang, Haiyong Jiang, Jin Huang, Feng Tian",
+      authorNote: "* Equal contribution (co-first authors).",
       image: "assets/publications/vrsketch2gaussian.svg",
       imageAlt: "VRSketch2Gaussian pipeline from VR sketching and text guidance to a generated 3D Gaussian object.",
       abstract: "We propose VRSketch2Gaussian, the first VR sketch-guided, multimodal, native-3D object generation framework that incorporates the 3D Gaussian Splatting (3DGS) representation. As part of our work, we introduce VRSS, the first large-scale paired dataset containing VR sketches, text descriptions, images, and 3DGS representations, bridging the gap in multimodal VR sketch-based generation. Our approach features three key innovations. First, a two-stage sketch–CLIP alignment strategy bridges the domain gap between sparse VR sketch embeddings and rich CLIP embeddings through contrastive learning, facilitating both retrieval and generation. Second, fine-grained multimodal conditioning disentangles generation by using explicit VR sketches for geometry and text descriptions for appearance, enabled by a Perceiver-based reducer that preserves spatial information while maintaining computational efficiency. Third, native-3D generation with appearance–geometry joint refinement produces high-quality 3D Gaussian models with fine geometric control and visual fidelity. Experiments on VRSS demonstrate superior performance in VR sketch-guided 3D generation compared with existing approaches.",
