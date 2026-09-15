@@ -39,7 +39,19 @@ window.SITE_CONTENT = {
       links: []
     },
     {
-      order: 4,
+      order: 3,
+      venue: "arXiv 2026",
+      title: "TG-Diff: Coupling Discrete Topology Diffusion and Topology-conditioned Geometry Diffusions for B-Rep Generation",
+      authors: "MingZe Sun, Haiyong Jiang, Bingchen Yang, Haoxuan Song, Yidi Li, Jun Xiao, Peter Wonka",
+      image: "assets/publications/tgdiff.png",
+      imageAlt: "TG-Diff teaser comparing generation quality and runtime efficiency, alongside diverse generated B-rep models.",
+      abstract: "Boundary representation (B-rep) is the standard format for computer-aided design (CAD). This article proposes a lightweight two-stage diffusion-based B-rep generation framework, TG-Diff, that achieves efficient, high-quality B-rep generation by decoupling topology and geometric modeling. In contrast to previous work that generates topology as a collection of vertices, edges, and surfaces together with their relationships, TG-Diff represents topology only as a collection of surfaces and their adjacency relationships. This surface-centric representation inherently alleviates the geometric and topological inconsistencies between separately generated surfaces, edges, and vertices, simplifying the generation process. Based on the surface-centric representation, we develop two independent diffusion models that generate surface adjacency relationships and surface latents, respectively. By using topology as guidance, the surface generation process becomes more stable, leading to stronger structural completeness in the generated B-rep models. The topology diffusion model adopts a Discrete Diffusion Model (D3PM) for efficient binary sampling, avoiding the slow inference of autoregressive methods. Surface latent generation employs a conditional latent diffusion model with a lightweight DiT architecture, where surface adjacency guides geometry generation while reducing computational cost. Finally, edges and vertices are derived from the decoded adjacent surfaces via post-processing to form a final watertight B-rep. Despite its compact computational footprint (82.18M parameters and 2.2 GFLOPs), TG-Diff excels in the validity metric while achieving superior performance on all COV, MMD, and JSD metrics across the DeepCAD and ABC datasets.",
+      links: [
+        { label: "Paper", url: "https://arxiv.org/abs/2607.21928" }
+      ]
+    },
+    {
+      order: 5,
       venue: "ICCAD 2026",
       title: "QuantizeHeat: Generalizable Thermal Prediction for 2.5D Chiplets via Thermal-Aware Discrete Latent Space Mapping",
       authors: "Ze Hao, Yu Zhang, Haoxuan Song, Tianyu Liang, Yijun Chen, Kang Zhao, Jianwang Zhai",
@@ -49,11 +61,10 @@ window.SITE_CONTENT = {
       links: []
     },
     {
-      order: 3,
+      order: 4,
       venue: "arXiv 2025",
       title: "VRSketch2Gaussian: 3D VR Sketch Guided 3D Object Generation with Gaussian Splatting",
       authors: "Songen Gu*, Haoxuan Song*, Binjie Liu, Qian Yu, Sanyi Zhang, Haiyong Jiang, Jin Huang, Feng Tian",
-      authorNote: "* Equal contribution (co-first authors).",
       image: "assets/publications/vrsketch2gaussian.svg",
       imageAlt: "VRSketch2Gaussian pipeline from VR sketching and text guidance to a generated 3D Gaussian object.",
       abstract: "We propose VRSketch2Gaussian, the first VR sketch-guided, multimodal, native-3D object generation framework that incorporates the 3D Gaussian Splatting (3DGS) representation. As part of our work, we introduce VRSS, the first large-scale paired dataset containing VR sketches, text descriptions, images, and 3DGS representations, bridging the gap in multimodal VR sketch-based generation. Our approach features three key innovations. First, a two-stage sketch–CLIP alignment strategy bridges the domain gap between sparse VR sketch embeddings and rich CLIP embeddings through contrastive learning, facilitating both retrieval and generation. Second, fine-grained multimodal conditioning disentangles generation by using explicit VR sketches for geometry and text descriptions for appearance, enabled by a Perceiver-based reducer that preserves spatial information while maintaining computational efficiency. Third, native-3D generation with appearance–geometry joint refinement produces high-quality 3D Gaussian models with fine geometric control and visual fidelity. Experiments on VRSS demonstrate superior performance in VR sketch-guided 3D generation compared with existing approaches.",
@@ -62,7 +73,7 @@ window.SITE_CONTENT = {
       ]
     },
     {
-      order: 5,
+      order: 6,
       venue: "NeurIPS 2025",
       title: "SegGraph: Leveraging Graphs of SAM Segments for Few-Shot 3D Part Segmentation",
       authors: "Yueyang Hu, Haiyong Jiang, Haoxuan Song, Jun Xiao, Hao Pan",
@@ -75,7 +86,7 @@ window.SITE_CONTENT = {
       ]
     },
     {
-      order: 6,
+      order: 7,
       venue: "CVPR 2025",
       title: "D³CTTA: Domain-Dependent Decorrelation for Continual Test-Time Adaption of 3D LiDAR Segmentation",
       authors: "Jichun Zhao, Haiyong Jiang, Haoxuan Song, Jun Xiao, Dong Gong",

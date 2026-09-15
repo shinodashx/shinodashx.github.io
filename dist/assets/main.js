@@ -100,13 +100,6 @@
     });
     details.append(meta, title, authors);
 
-    if (item.authorNote) {
-      const authorNote = document.createElement("p");
-      authorNote.className = "publication-authors";
-      authorNote.textContent = item.authorNote;
-      details.appendChild(authorNote);
-    }
-
     if (links.childElementCount) actions.appendChild(links);
 
     if (item.abstract) {

@@ -100,9 +100,11 @@ h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 20px; marg
 .section-title-row h2 { color: var(--ink); font-family: var(--font-heading); font-size: 31px; font-weight: 400; letter-spacing: -0.7px; line-height: 1.3; }
 .section-index { flex-shrink: 0; color: var(--muted); font-size: 12px; letter-spacing: 0.5px; }
 .section-note { margin-top: 13px; color: var(--muted); font-size: 14px; }
-.publication-list { display: grid; gap: 12px; margin-top: 20px; }
+.contribution-note { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.publication-list { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: stretch; gap: 12px; margin-top: 20px; }
 .publication { display: grid; grid-template-columns: 206px minmax(0, 1fr); gap: 26px; padding: 14px 22px; align-items: start; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--publication-accent); border-radius: 6px; }
 .publication-media { margin-top: 3px; }
+.publication:not(:has(details[open])) .publication-media:has(img[src="assets/publications/tgdiff.png"]) { align-self: center; }
 .publication-media img { display: block; width: 100%; height: auto; }
 .publication-content { min-width: 0; }
 .publication:not(:has(.publication-media)) .publication-content { grid-column: 1 / -1; }
