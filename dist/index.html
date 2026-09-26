@@ -1,116 +1,101 @@
 <!doctype html>
 <html lang="en">
+  <!-- Academic Homepage template by Shitong Luo; adapted from thunderlrr/songxinlei.github.io. -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Haoxuan Song — PhD candidate at the Chinese Academy of Sciences, working on multimodal large language models and 3D vision." />
-    <meta name="theme-color" content="#f4f8fc" />
-    <title>Haoxuan Song | 宋昊轩</title>
+    <meta name="theme-color" content="#f8f9fa" />
+    <title>Homepage - Haoxuan Song | 宋昊轩</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="assets/styles.css" />
     <script src="assets/data.js" defer></script>
     <script src="assets/main.js" defer></script>
   </head>
-  <body id="top">
+  <body class="bg-light" id="top">
     <a class="skip-link" href="#content">Skip to content</a>
-
-    <header class="site-header">
-      <div class="header-inner">
-        <nav class="site-nav" aria-label="Main navigation">
-          <a href="#about" aria-current="location">About</a>
-          <a href="#publications">Research</a>
-          <a href="#education">Education</a>
-        </nav>
-      </div>
-    </header>
-
-    <div class="page-layout">
-      <aside class="profile" aria-label="Profile and contact">
-        <figure class="portrait">
-          <img src="assets/profile.webp" alt="Haoxuan Song overlooking a mountain lake" width="1178" height="1178" decoding="async" fetchpriority="high" />
-        </figure>
-        <div class="profile-details">
-          <p class="role">PhD Candidate</p>
-          <p class="affiliation">Chinese Academy<br /> of Sciences</p>
-          <p class="location">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" /><circle cx="12" cy="10" r="2.5" /></svg>
-            Beijing, China
-          </p>
-          <nav class="profile-links" aria-label="Profile links">
-            <a data-email-link href="mailto:1323827835@qq.com">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></svg>
-              Email <span class="link-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a data-github-link href="https://github.com/shinodashx">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-3c3 0 6-1 6-5a4 4 0 0 0-1-3 4 4 0 0 0 0-4s-1 0-4 2a13 13 0 0 0-6 0C6 3 5 3 5 3a4 4 0 0 0 0 4 4 4 0 0 0-1 3c0 4 3 5 6 5a3.5 3.5 0 0 0-1 3v4" /></svg>
-              GitHub <span class="link-arrow" aria-hidden="true">↗</span>
-            </a>
-          </nav>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand" href="./">Haoxuan Song</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-map" aria-hidden="true"></i> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="./" aria-current="page">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          </ul>
         </div>
-      </aside>
+      </div>
+    </nav>
 
-      <main id="content" class="main-content" tabindex="-1">
-        <section class="about" id="about" aria-labelledby="page-title">
-          <p class="eyebrow">Vision, language &amp; geometry</p>
-          <h1 id="page-title">
-            <span class="name-primary">Haoxuan Song</span>
-            <span class="name-native" lang="zh">宋昊轩</span>
-          </h1>
-
-          <div class="intro">
-            <p>I am a PhD candidate at the Chinese Academy of Sciences. My research focuses on <strong>multimodal large language models</strong> and <strong>3D vision</strong>, with an interest in geometric representation, reconstruction, and understanding.</p>
-            <p id="bio-placeholder" class="secondary" hidden></p>
-          </div>
-
-          <section class="interest-inline" aria-labelledby="research-title">
-            <h2 id="research-title" class="eyebrow">Research interests</h2>
-            <div class="interest-list" id="research-list"></div>
-          </section>
-        </section>
-
-        <section class="section" id="publications" aria-labelledby="publications-title">
-          <header class="section-title-row">
-            <h2 id="publications-title">Selected publications<span class="heading-dot" aria-hidden="true">.</span></h2>
-            <span class="section-index" aria-hidden="true">01 / Research</span>
-          </header>
-          <p class="section-note">Multimodal intelligence, geometric computing, and 3D vision.</p>
-          <p class="contribution-note">* Equal contribution (co-first authors).</p>
-          <div class="publication-list" id="publication-list"></div>
-        </section>
-
-        <section class="section" id="education" aria-labelledby="education-title">
-          <header class="section-title-row">
-            <h2 id="education-title">Education<span class="heading-dot" aria-hidden="true">.</span></h2>
-            <span class="section-index" aria-hidden="true">02 / Background</span>
-          </header>
-          <div class="education-list">
-            <article class="education-item">
-              <span class="education-mark" aria-hidden="true">CAS</span>
-              <div>
-                <h3>Chinese Academy of Sciences</h3>
-                <p>Ph.D. Candidate</p>
+    <main class="container" id="content" tabindex="-1">
+      <section class="row mb-4" aria-labelledby="page-title">
+        <div class="col">
+          <div class="card border-0 shadow-sm bg-white">
+            <div class="card-body profile-body">
+              <div class="row align-items-center profile-header">
+                <div class="col-auto">
+                  <figure class="figure mb-0">
+                    <img src="assets/profile.webp" class="figure-img img-fluid shadow profile-portrait" alt="Haoxuan Song overlooking a mountain lake" width="160" height="160" fetchpriority="high" />
+                  </figure>
+                </div>
+                <div class="col profile-heading">
+                  <h1 class="h3 mb-2" id="page-title">Haoxuan Song <small class="text-muted" lang="zh">宋昊轩</small></h1>
+                  <div class="text-profile-position p-2 rounded bg-light">
+                    <div>Ph.D. Candidate</div>
+                    <div>Chinese Academy of Sciences</div>
+                    <div>Beijing, China</div>
+                  </div>
+                </div>
               </div>
-              <p class="education-location">Beijing, China</p>
-            </article>
+              <div class="text-profile-bio mb-3 mt-3">
+                <p>I am a PhD candidate at the <a href="https://www.cas.cn/" target="_blank" rel="noreferrer">Chinese Academy of Sciences</a>. My research focuses on <strong>multimodal large language models</strong> and <strong>3D vision</strong>, with an interest in geometric representation, reconstruction, and understanding.</p>
+                <p id="bio-placeholder" hidden></p>
+              </div>
+              <div class="social-links">
+                <a class="pr-3 no-break text-decoration-none" data-email-link href="mailto:1323827835@qq.com"><i class="fas fa-at" aria-hidden="true"></i> <span class="email-text">1323827835(at)qq.com</span></a>
+                <a class="pr-3 no-break text-decoration-none" data-github-link href="https://github.com/shinodashx" target="_blank" rel="noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section" id="honors" aria-labelledby="honors-title" hidden>
-          <header class="section-title-row">
-            <h2 id="honors-title">Honors and Awards</h2>
-          </header>
-        </section>
+      <section class="row mb-4" aria-labelledby="education-title">
+        <div class="col">
+          <div class="card border-0 shadow-sm bg-white">
+            <h2 class="h6 p-3 mb-0" id="education-title"><i class="fas fa-graduation-cap mr-2" aria-hidden="true"></i>Education Background</h2>
+            <div class="px-3 pb-1">
+              <ul class="list-unstyled mb-1">
+                <li class="media mb-3">
+                  <i class="fas fa-university mr-2 mt-1 align-self-center text-muted" aria-hidden="true"></i>
+                  <div class="media-body">
+                    <div class="education-name">Chinese Academy of Sciences</div>
+                    <div class="small d-flex flex-wrap"><div>Ph.D. Candidate</div><div class="ml-auto no-break"><em>Beijing, China</em></div></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="section" id="academic-services" aria-labelledby="academic-services-title" hidden>
-          <header class="section-title-row">
-            <h2 id="academic-services-title">Academic Services</h2>
-          </header>
-        </section>
-
-        <footer class="footer">
-          <span>© <span id="year"></span> Haoxuan Song</span>
-          <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
-        </footer>
-      </main>
-    </div>
+      <section class="my-3 p-0 bg-white shadow-sm rounded-sm" id="publications" aria-labelledby="publications-title">
+        <h2 class="h6 p-3 mb-0" id="publications-title"><i class="fas fa-star mr-2" aria-hidden="true"></i>Selected Publications <a href="publications.html">(view all <i class="fas fa-angle-double-right" aria-hidden="true"></i>)</a></h2>
+        <div id="publication-list"></div>
+        <p class="small text-muted px-3 pb-3 mb-0">* Equal contribution (co-first authors).</p>
+      </section>
+      <noscript><p>Please enable JavaScript to view the publication list.</p></noscript>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row my-3">
+          <div class="col-6 text-muted"><i>Last updated: Sep 2026</i></div>
+          <div class="col-6 text-right"><a href="https://github.com/luost26/academic-homepage" target="_blank" rel="noreferrer">Academic Homepage</a></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -18,6 +18,7 @@ window.SITE_CONTENT = {
   publications: [
     {
       order: 1,
+      year: 2026,
       venue: "ACM TOG 2026",
       title: "CADRec: Reconstructing a CAD Sequence Recursively with Localized Geometric Contexts",
       authors: "Haoxuan Song et al.",
@@ -31,6 +32,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 2,
+      year: null,
       venue: "Under Review",
       title: "BREP Learning paper",
       authors: "Haoxuan Song et al.",
@@ -40,6 +42,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 3,
+      year: 2026,
       venue: "arXiv 2026",
       title: "TG-Diff: Coupling Discrete Topology Diffusion and Topology-conditioned Geometry Diffusions for B-Rep Generation",
       authors: "MingZe Sun, Haiyong Jiang, Bingchen Yang, Haoxuan Song, Yidi Li, Jun Xiao, Peter Wonka",
@@ -52,6 +55,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 5,
+      year: 2026,
       venue: "ICCAD 2026",
       title: "QuantizeHeat: Generalizable Thermal Prediction for 2.5D Chiplets via Thermal-Aware Discrete Latent Space Mapping",
       authors: "Ze Hao, Yu Zhang, Haoxuan Song, Tianyu Liang, Yijun Chen, Kang Zhao, Jianwang Zhai",
@@ -62,6 +66,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 4,
+      year: 2025,
       venue: "arXiv 2025",
       title: "VRSketch2Gaussian: 3D VR Sketch Guided 3D Object Generation with Gaussian Splatting",
       authors: "Songen Gu*, Haoxuan Song*, Binjie Liu, Qian Yu, Sanyi Zhang, Haiyong Jiang, Jin Huang, Feng Tian",
@@ -74,6 +79,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 6,
+      year: 2025,
       venue: "NeurIPS 2025",
       title: "SegGraph: Leveraging Graphs of SAM Segments for Few-Shot 3D Part Segmentation",
       authors: "Yueyang Hu, Haiyong Jiang, Haoxuan Song, Jun Xiao, Hao Pan",
@@ -87,6 +93,7 @@ window.SITE_CONTENT = {
     },
     {
       order: 7,
+      year: 2025,
       venue: "CVPR 2025",
       title: "D³CTTA: Domain-Dependent Decorrelation for Continual Test-Time Adaption of 3D LiDAR Segmentation",
       authors: "Jichun Zhao, Haiyong Jiang, Haoxuan Song, Jun Xiao, Dong Gong",

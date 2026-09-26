@@ -1,81 +1,59 @@
 (() => {
-  const content = window.SITE_CONTENT || {};
-  const profile = content.profile || {};
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  if (profile.email) {
-    document.querySelectorAll("[data-email-link]").forEach((link) => {
-      link.href = `mailto:${profile.email}`;
-    });
-  }
-
-  if (profile.github) {
-    document.querySelectorAll("[data-github-link]").forEach((link) => {
-      link.href = profile.github;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-    });
-  }
-
-  if (profile.bio) {
-    const placeholder = document.getElementById("bio-placeholder");
-    placeholder.textContent = profile.bio;
-    placeholder.hidden = false;
-  }
-
-  const researchList = document.getElementById("research-list");
-  (content.research || []).forEach((item) => {
-    const tag = document.createElement("span");
-    tag.className = "research-tag";
-    tag.textContent = item.title;
-    if (item.description) tag.title = item.description;
-    researchList.appendChild(tag);
+  const content = window.SITE_CONTENT;
+  const profile = content.profile;
+  const menuButton = document.querySelector(".navbar-toggler");
+  const menu = document.getElementById("navbarResponsive");
+  menuButton.addEventListener("click", () => {
+    const expanded = menu.classList.toggle("show");
+    menuButton.setAttribute("aria-expanded", String(expanded));
+  });
+  menu.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      menu.classList.remove("show");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.focus();
+    }
   });
 
-  const publicationList = document.getElementById("publication-list");
-  const publications = [...(content.publications || [])].sort(
-    (first, second) => (first.order ?? Number.MAX_SAFE_INTEGER) - (second.order ?? Number.MAX_SAFE_INTEGER)
-  );
-  publications.forEach((item) => {
-    const article = document.createElement("article");
-    article.className = "publication";
+  document.querySelectorAll("[data-email-link]").forEach((link) => {
+    link.href = `mailto:${profile.email}`;
+    link.querySelector(".email-text").textContent = profile.email.replace("@", "(at)");
+  });
+  document.querySelectorAll("[data-github-link]").forEach((link) => {
+    link.href = profile.github;
+  });
+  const bio = document.getElementById("bio-placeholder");
+  if (bio && profile.bio) {
+    bio.textContent = profile.bio;
+    bio.hidden = false;
+  }
 
+  function publicationCard(item) {
+    const article = document.createElement("article");
+    article.className = "publication row no-gutters";
     if (item.image) {
-      const media = document.createElement("figure");
-      media.className = "publication-media";
+      const media = document.createElement("div");
+      media.className = "publication-media col-md-3 col-xl-2 p-md-3";
       const image = document.createElement("img");
+      image.className = "publication-image rounded-sm";
       image.src = item.image;
       image.alt = item.imageAlt || "";
       image.loading = "lazy";
       image.decoding = "async";
-      image.width = 1200;
-      image.height = 675;
       media.appendChild(image);
       article.appendChild(media);
     }
 
-    const meta = document.createElement("div");
-    meta.className = "publication-meta";
-    const venue = document.createElement("span");
-    venue.className = "venue";
-    venue.textContent = item.venue || "Preprint";
-    meta.appendChild(venue);
-
-    if (item.note) {
-      const note = document.createElement("span");
-      note.className = "publication-note";
-      note.textContent = item.note;
-      meta.appendChild(note);
-    }
-
     const details = document.createElement("div");
-    details.className = "publication-content";
+    details.className = item.image
+      ? "publication-content col-md-9 col-xl-10 p-3 pl-md-0"
+      : "publication-content col p-3";
     const title = document.createElement("h3");
+    title.className = "publication-title mt-0 mb-1 font-weight-normal";
     title.textContent = item.title;
     const authors = document.createElement("p");
-    authors.className = "publication-authors";
-    const authorText = item.authors || "";
+    authors.className = "mt-0 mb-0 small";
+    const authorText = item.authors;
     const ownName = "Haoxuan Song";
     const ownNameIndex = authorText.indexOf(ownName);
     if (ownNameIndex >= 0) {
@@ -86,69 +64,86 @@
     } else {
       authors.textContent = authorText;
     }
-    const actions = document.createElement("div");
-    actions.className = "publication-actions";
+    const venue = document.createElement("p");
+    venue.className = "mt-0 mb-0 small text-muted";
+    const venueName = document.createElement("i");
+    venueName.textContent = item.venue;
+    venue.appendChild(venueName);
+    if (item.note) venue.append(` · ${item.note}`);
+    details.append(title, authors, venue);
+
     const links = document.createElement("div");
-    links.className = "publication-links";
-    (item.links || []).forEach((itemLink) => {
+    links.className = "publication-links small text-muted";
+    item.links.forEach((itemLink) => {
       const link = document.createElement("a");
       link.href = itemLink.url;
-      link.textContent = `${itemLink.label} ↗`;
+      link.textContent = `[${itemLink.label}]`;
       link.target = "_blank";
       link.rel = "noreferrer";
       links.appendChild(link);
     });
-    details.append(meta, title, authors);
-
-    if (links.childElementCount) actions.appendChild(links);
-
     if (item.abstract) {
       const disclosure = document.createElement("details");
       disclosure.className = "publication-abstract";
       const summary = document.createElement("summary");
-      summary.textContent = "Abstract";
+      summary.textContent = "[Abstract]";
       summary.setAttribute("aria-label", `Abstract for ${item.title}`);
       const abstract = document.createElement("p");
       abstract.textContent = item.abstract;
       disclosure.append(summary, abstract);
-      actions.appendChild(disclosure);
+      links.appendChild(disclosure);
     }
-
-    if (actions.childElementCount) details.appendChild(actions);
+    details.appendChild(links);
     article.appendChild(details);
-    publicationList.appendChild(article);
-  });
-  if (!publications.length) document.getElementById("publications").hidden = true;
+    return article;
+  }
 
-  const navigation = [...document.querySelectorAll(".site-nav a")].map((link) => ({
-    link,
-    section: document.querySelector(link.getAttribute("href"))
-  }));
-  navigation.forEach(({ link, section }) => { link.hidden = section.hidden; });
-  const updateNavigation = () => {
-    const visible = navigation.filter(({ section }) => !section.hidden);
-    let current = visible[0];
-    for (const item of visible) {
-      if (item.section.getBoundingClientRect().top <= 150) current = item;
-    }
+  const publicationList = document.getElementById("publication-list");
+  const publications = [...content.publications].sort((a, b) => a.order - b.order);
+  if (!publicationList.hasAttribute("data-group-by-year")) {
+    publications.forEach((item) => publicationList.appendChild(publicationCard(item)));
+    return;
+  }
+
+  const yearNavigation = document.getElementById("navbar-year");
+  const years = [...new Set(publications.map((item) => item.year))].sort((a, b) => b - a);
+  const sections = years.map((year) => {
+    const section = document.createElement("section");
+    const id = year ? `year-${year}` : "under-review";
+    section.setAttribute("aria-labelledby", id);
+    const heading = document.createElement("h2");
+    heading.className = "pt-4 publication-year";
+    heading.id = id;
+    heading.textContent = year || "Under Review";
+    const list = document.createElement("div");
+    list.className = "my-0 p-0 bg-white shadow-sm rounded-sm";
+    publications.filter((item) => item.year === year).forEach((item) => list.appendChild(publicationCard(item)));
+    section.append(heading, list);
+    publicationList.appendChild(section);
+    const link = document.createElement("a");
+    link.className = "nav-link d-block";
+    link.href = `#${id}`;
+    link.textContent = heading.textContent;
+    yearNavigation.appendChild(link);
+    return { heading, link };
+  });
+
+  function updateYearNavigation() {
+    let active = sections[0];
+    sections.forEach((section) => {
+      if (section.heading.getBoundingClientRect().top <= 110) active = section;
+    });
     if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
-      current = visible[visible.length - 1];
+      active = sections[sections.length - 1];
     }
-    navigation.forEach((item) => {
-      if (item === current) item.link.setAttribute("aria-current", "location");
-      else item.link.removeAttribute("aria-current");
+    sections.forEach((section) => {
+      section.link.classList.toggle("active", section === active);
+      if (section === active) section.link.setAttribute("aria-current", "location");
+      else section.link.removeAttribute("aria-current");
     });
-  };
-  let scheduled = false;
-  window.addEventListener("scroll", () => {
-    if (scheduled) return;
-    scheduled = true;
-    requestAnimationFrame(() => {
-      updateNavigation();
-      scheduled = false;
-    });
-  }, { passive: true });
-  window.addEventListener("resize", updateNavigation);
-  window.addEventListener("load", updateNavigation);
-  updateNavigation();
+  }
+  window.addEventListener("scroll", updateYearNavigation, { passive: true });
+  window.addEventListener("resize", updateYearNavigation);
+  window.addEventListener("load", updateYearNavigation);
+  updateYearNavigation();
 })();

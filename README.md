@@ -4,15 +4,17 @@ Live site: <https://shinodashx.github.io/>
 
 A compact, responsive academic homepage for Haoxuan Song (宋昊轩), PhD candidate at the Chinese Academy of Sciences.
 
-The visual system is an original, restrained implementation informed by [Kill AI Slop](https://killaislop.com/) and established academic-homepage patterns.
+The homepage and publications page use the [Songxin Lei homepage](https://thunderlrr.github.io/songxinlei.github.io/) version of Shitong Luo's [Academic Homepage](https://github.com/luost26/academic-homepage) template. The original MIT notice is preserved in `dist/assets/TEMPLATE-LICENSE.txt`. Bootstrap 4.6.0 and Font Awesome 6.5.1 are served locally with their license notices, so rendering does not depend on external CDNs.
 
 ## Update content
 
-Edit `dist/assets/data.js` to update profile links and publications. Edit the introduction in `dist/index.html`.
+Edit `dist/assets/data.js` to update profile links and publications. `order` controls the homepage order; `year` groups papers on `dist/publications.html` (use `null` for undated work under review). Edit the introduction and education in `dist/index.html`. Update the footer date in both HTML pages when publishing content changes.
+
+Only existing personal information is displayed; the reference author's news, work experience, awards, and affiliations are not copied. The standalone `dist/CADRec/` project page is unchanged.
 
 ## Preview locally
 
-Open `dist/index.html` in a browser or serve the repository with any static file server.
+Run `python3 -m http.server 8000 --directory dist`, then open the server in a browser. No build step is needed.
 
 ## Publishing
 
