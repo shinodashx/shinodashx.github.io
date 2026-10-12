@@ -34,8 +34,8 @@ window.SITE_CONTENT = {
       order: 2,
       year: null,
       venue: "Under Review",
-      title: "BREP Learning paper",
-      authors: "Haoxuan Song et al.",
+      title: "BRepDSN: A Dual-stream Network Design for B-Rep Representation Learning Leveraging the Duality of Face and Boundary Vertices",
+      authors: "Haoxuan Song*, Bingchen Yang*, Jun Xiao, Peter Wonka, Haiyong Jiang†",
       image: "assets/publications/brepdsn.svg",
       imageAlt: "Boundary-representation examples showing face and boundary-vertex structures.",
       links: []
