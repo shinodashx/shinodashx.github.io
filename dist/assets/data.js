@@ -32,8 +32,8 @@ window.SITE_CONTENT = {
     },
     {
       order: 2,
-      year: null,
-      venue: "Under Review",
+      year: 2026,
+      venue: "ACM TOG 2026",
       title: "BRepDSN: A Dual-stream Network Design for B-Rep Representation Learning Leveraging the Duality of Face and Boundary Vertices",
       authors: "Haoxuan Song*, Bingchen Yang*, Jun Xiao, Peter Wonka, Haiyong Jiang†",
       image: "assets/publications/brepdsn.svg",
